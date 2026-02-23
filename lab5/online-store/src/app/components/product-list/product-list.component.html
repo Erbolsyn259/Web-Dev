@@ -1,0 +1,51 @@
+<div class="product-list-container">
+  <!-- Заголовок категории и поиск (только если есть продукты) -->
+  <div *ngIf="products.length > 0" class="list-header">
+    <h2 class="category-title">{{ categoryName }}</h2>
+    
+    <!-- Секция поиска -->
+    <div class="search-section">
+      <div class="search-container">
+        <label for="searchInput" class="search-label">Search products</label>
+        <input
+          id="searchInput"
+          type="text"
+          class="search-input"
+          placeholder="Search by product name..."
+          [(ngModel)]="searchQuery"
+          (input)="onSearchInput()"
+        />
+      </div>
+      
+      <div class="results-info" *ngIf="filteredProducts.length > 0">
+        {{ getShowingCount() }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Сообщение, если нет продуктов в категории -->
+  <div *ngIf="products.length === 0" class="empty-state">
+    <div class="empty-icon">📦</div>
+    <h3>No products in this category</h3>
+    <p>There are no products available in {{ categoryName }} at the moment.</p>
+  </div>
+
+  <!-- Сообщение, если ничего не найдено по поиску -->
+  <div *ngIf="products.length > 0 && filteredProducts.length === 0" class="no-results">
+    <p>No products found matching "{{ searchQuery }}"</p>
+    <button class="clear-search-btn" (click)="searchQuery = ''; filterProducts()">
+      Clear search
+    </button>
+  </div>
+
+  <!-- Сетка продуктов -->
+  <div class="products-grid" *ngIf="filteredProducts.length > 0">
+    <!-- ВАЖНО: Используем app-product-item вместо app-product-card -->
+    <app-product-item 
+      *ngFor="let product of filteredProducts" 
+      [product]="product"
+      (delete)="onDeleteProduct($event)"
+      (like)="onLikeProduct($event)">
+    </app-product-item>
+  </div>
+</div>

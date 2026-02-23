@@ -1,0 +1,49 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1 (click)="clearSelection()" class="app-title">Online Store</h1>
+    <p class="app-subtitle">Discover the best products from kaspi.kz</p>
+  </header>
+
+  <div class="categories-section">
+    <h2 class="section-title">Categories</h2>
+    <div class="categories-grid">
+      <button 
+        *ngFor="let category of categories" 
+        class="category-btn"
+        [class.active]="selectedCategory?.id === category.id"
+        (click)="selectCategory(category)">
+        <span class="category-icon">{{ category.icon }}</span>
+        <span class="category-name">{{ category.name }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div *ngIf="!selectedCategory" class="welcome-message">
+      <div class="welcome-icon">👋</div>
+      <h2>Welcome to Online Store!</h2>
+      <p>Please select a category to start browsing products</p>
+    </div>
+
+    <div *ngIf="selectedCategory" class="category-content">
+      <div class="category-header">
+        <h2>
+          <span class="category-header-icon">{{ selectedCategory.icon }}</span>
+          {{ selectedCategory.name }}
+        </h2>
+        <button class="back-btn" (click)="clearSelection()">
+          ← Back to Categories
+        </button>
+      </div>
+      
+      <app-product-list 
+        [products]="products" 
+        [categoryName]="selectedCategory.name">
+      </app-product-list>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p>© 2026 Online Store. All products are from <a href="https://kaspi.kz" target="_blank">kaspi.kz</a></p>
+  </footer>
+</div>
