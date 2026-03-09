@@ -1,0 +1,41 @@
+<div class="product-card">
+    <a [href]="product.link" target="_blank" class="product-link">
+      <img [src]="product.image" [alt]="product.name" class="product-image">
+    </a>
+    
+    <div class="product-info">
+      <h3 class="product-title">
+        <a [href]="product.link" target="_blank">{{ product.name }}</a>
+      </h3>
+      
+      <p class="product-description">{{ product.description }}</p>
+      
+      <div class="product-price">{{ product.price | number }} ₸</div>
+      
+      <div class="product-rating">
+        <span class="stars">
+          <span *ngFor="let star of getRatingStars()">{{ star }}</span>
+        </span>
+        <span class="rating-value">{{ product.rating }}</span>
+      </div>
+      
+      <div class="product-actions">
+        <button class="like-btn" (click)="onLike()" [class.liked]="product.likes > 0">
+          <span class="heart">❤</span>
+          <span class="likes-count">{{ product.likes }}</span>
+        </button>
+        
+        <div class="action-buttons">
+          <button class="share-btn whatsapp" (click)="shareOnWhatsApp()" title="Share on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </button>
+          <button class="share-btn telegram" (click)="shareOnTelegram()" title="Share on Telegram">
+            <i class="fab fa-telegram"></i>
+          </button>
+          <button class="delete-btn" (click)="onDelete()" title="Delete product">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
