@@ -1,0 +1,71 @@
+[
+  {
+    "model": "api.category",
+    "pk": 1,
+    "fields": {
+      "name": "Смартфоны"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 2,
+    "fields": {
+      "name": "Ноутбуки"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 3,
+    "fields": {
+      "name": "Наушники"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 1,
+    "fields": {
+      "name": "iPhone 16 Pro",
+      "price": 599000.0,
+      "description": "Apple-дың жаңа флагманы",
+      "count": 12,
+      "is_active": true,
+      "category": 1
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 2,
+    "fields": {
+      "name": "Samsung Galaxy S25",
+      "price": 499000.0,
+      "description": "Samsung-ның ең жаңа моделі",
+      "count": 8,
+      "is_active": true,
+      "category": 1
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 3,
+    "fields": {
+      "name": "MacBook Air M3",
+      "price": 720000.0,
+      "description": "Жұқа және қуатты ноутбук",
+      "count": 5,
+      "is_active": true,
+      "category": 2
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 4,
+    "fields": {
+      "name": "Sony WH-1000XM5",
+      "price": 185000.0,
+      "description": "Шуды басатын жақсы наушник",
+      "count": 20,
+      "is_active": true,
+      "category": 3
+    }
+  }
+]
